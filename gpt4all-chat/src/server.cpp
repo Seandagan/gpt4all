@@ -457,7 +457,7 @@ static QJsonObject requestFromJson(const QByteArray &request)
 void Server::start()
 {
     m_server = std::make_unique<QHttpServer>(this);
-    if (!m_server->listen(QHostAddress::LocalHost, MySettings::globalInstance()->networkPort())) {
+    if (!m_server->listen(QHostAddress::Any, MySettings::globalInstance()->networkPort())) {
         qWarning() << "ERROR: Unable to start the server";
         return;
     }
